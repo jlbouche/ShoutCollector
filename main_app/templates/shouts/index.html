@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Shouts List</h1>
+
+{% for shout in shouts %}
+  <div class="card">
+    <div class="card-content">
+      <span class="card-title">{{ shout.words }}</span>
+      <p>Translation: {{ shout.translation }}</p>
+      <p>Common name: {{ shout.name }}</p>
+      <p>Effect: {{ shout.effect }}</p>
+    </div>
+  </div>
+{% endfor %}
+
+{% endblock %}
