@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Shout Details</h1>
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">{{ shout.words }}</span>
+    <p>Translation: {{ shout.translation }}</p>
+    <p>Common name: {{ shout.name }}</p>
+    <p>Effect: {{ shout.effect }}</p>
+  </div>
+</div>
+<a href ="{% url 'index'%}">Return to All Shouts</a>
+
+{% endblock %}
