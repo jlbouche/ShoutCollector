@@ -1,10 +1,28 @@
 from django.shortcuts import render
-
+# Add the following import
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Shout
 
-from django.http import HttpResponse
-
 # Create your views here.
+
+#Create, Update, and Delete view functions:
+
+class ShoutCreate(CreateView):
+  model = Shout
+  fields = '__all__'
+  success_url = '/shouts/'
+
+class ShoutUpdate(UpdateView):
+  model = Shout
+  # Let's disallow the renaming of a cat by excluding the name field!
+  fields = ['translation', 'name', 'effect']
+
+class ShoutDelete(DeleteView):
+  model = Shout
+  success_url = '/shouts/'
+
+#url view formats
+
 def home(request):
     return render(request, 'home.html') # res.send
 

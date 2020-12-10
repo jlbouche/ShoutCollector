@@ -9,6 +9,10 @@
     <p>Common name: {{ shout.name }}</p>
     <p>Effect: {{ shout.effect }}</p>
   </div>
+  <div class="card-action">
+    <a href="{% url 'shouts_update' shout.id %}">Edit</a>
+    <a href="{% url 'shouts_delete' shout.id %}">Delete</a>
+  </div>
 </div>
 <a href ="{% url 'index'%}">Return to All Shouts</a>
 
