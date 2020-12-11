@@ -26,7 +26,13 @@
       {{ shouting_form.as_p }}
       <input type="submit" class='btn black' value="Add Shouting">
     </form>
-
+    <!--if/else checking last date/time logged-->
+    <br>
+    {% if shout.shouted_for_today %}
+      <div class="card-panel black-text center-align">Your skill using {{shout.name}} grows stronger.</div>
+    {% else %}
+      <div class="card-panel red-text center-align">Your Thu'um grows weak, now shout! <i>{{shout.words}}</i>!</div>
+    {% endif %}
 
     <table class="striped">
       <thead>

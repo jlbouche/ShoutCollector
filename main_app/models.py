@@ -1,6 +1,8 @@
 from django.db import models
 # Import the reverse function
 from django.urls import reverse
+#import datetime
+from datetime import date
 
 #Tuple to be called in any models up here:
 TIMES = (
@@ -21,6 +23,9 @@ class Shout(models.Model):
     
     def get_absolute_url(self):
         return reverse('detail', kwargs={'shout_id': self.id})
+    
+    def shouted_for_today(self):
+        return self.shouting_set.filter(date=date.today()).count() >= len(TIMES)
 
 class Shouting(models.Model):
     date = models.DateField('Date shouted')
