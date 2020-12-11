@@ -11,12 +11,18 @@ TIMES = (
     ('E', 'Evening')
 )
 
+class Dragon(models.Model):
+    name = models.CharField(max_length=50)
+    typeof = models.CharField(max_length=20)
+
 # Create your models here.
 class Shout(models.Model):
     words = models.CharField(max_length=100)
     translation = models.CharField(max_length=100)
     name = models.CharField(max_length=100)
     effect = models.TextField(max_length=250)
+    #M:M relationship
+    dragons = models.ManyToManyField(Dragon)
 
     def __str__(self):
         return self.words

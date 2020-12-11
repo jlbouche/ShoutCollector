@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 # Add the following import
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Shout
+from .models import Shout, Dragon
 #import Shouting form
 from .forms import ShoutingForm
 
@@ -39,11 +39,15 @@ def shouts_index(request):
 
 def shouts_detail(request, shout_id):
   shout = Shout.objects.get(id=shout_id)
+  #get dragons not associated with shout
+  dragons_shout_doesnt_have = Dragon.objects.exclude(id__in = shout.dragons.all().values_list('id'))
   # instantiate FeedingForm to be rendered in the template
   shouting_form = ShoutingForm()
   return render(request, 'shouts/detail.html', {
     # include the cat and feeding_form in the context
-    'shout': shout, 'shouting_form': shouting_form
+    'shout': shout, 'shouting_form': shouting_form,
+    #add dragons to be displayed
+    'dragons': dragons_shout_doesnt_have
   })
 
 def add_shouting(request, shout_id):
@@ -57,3 +61,29 @@ def add_shouting(request, shout_id):
     new_shouting.shout_id = shout_id
     new_shouting.save()
   return redirect('detail', shout_id=shout_id)
+
+def assoc_dragon(request, shout_id, dragon_id):
+  #get shout and add dragon to the shout
+  Shout.objects.get(id=shout_id).dragons.add(dragon_id)
+  #redirect back to detail page
+  return redirect('detail', shout_id=shout_id)
+
+#views for M:M Dragons
+
+class DragonList(ListView):
+  model = Dragon
+
+class DragonDetail(DetailView):
+  model = Dragon
+
+class DragonCreate(CreateView):
+  model = Dragon
+  fields = '__all__'
+
+class DragonUpdate(UpdateView):
+  model = Dragon
+  fields = '__all__'
+
+class DragonDelete(DeleteView):
+  model = Dragon
+  fields = '__all__'
