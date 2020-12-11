@@ -60,6 +60,10 @@
             <span class="card-title">
               {{ dragon.name }}, a {{ dragon.typeof }} Dragon.
             </span>
+            <form action="{% url 'remove_dragon' shout.id dragon.id %}" method="POST">
+              {% csrf_token %}
+              <input type="submit" value="Delete" class="btn">
+            </form>
           </div>
         </div>
       {% endfor %}

@@ -69,6 +69,10 @@ def assoc_dragon(request, shout_id, dragon_id):
   #redirect back to detail page
   return redirect('detail', shout_id=shout_id)
 
+def remove_dragon(request, shout_id, dragon_id):
+  Shout.objects.get(id=shout_id).dragons.remove(dragon_id)
+  return redirect('detail', shout_id=shout_id)
+
 #views for M:M Dragons
 
 class DragonList(ListView):
