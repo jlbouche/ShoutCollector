@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 # Add the following import
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Shout
+#import Shouting form
+from .forms import ShoutingForm
 
 # Create your views here.
 
@@ -36,6 +38,22 @@ def shouts_index(request):
     return render(request, 'shouts/index.html', {'shouts': shouts}) 
 
 def shouts_detail(request, shout_id):
-    #find the cat that has the id of cat_id
-    shout = Shout.objects.get(id=shout_id)
-    return render(request, 'shouts/detail.html', {'shout': shout})
+  shout = Shout.objects.get(id=shout_id)
+  # instantiate FeedingForm to be rendered in the template
+  shouting_form = ShoutingForm()
+  return render(request, 'shouts/detail.html', {
+    # include the cat and feeding_form in the context
+    'shout': shout, 'shouting_form': shouting_form
+  })
+
+def add_shouting(request, shout_id):
+  # create a ModelForm instance using the data in request.POST
+  form = ShoutingForm(request.POST)
+  # validate the form
+  if form.is_valid():
+    # don't save the form to the db until it
+    # has the cat_id assigned
+    new_shouting = form.save(commit=False)
+    new_shouting.shout_id = shout_id
+    new_shouting.save()
+  return redirect('detail', shout_id=shout_id)

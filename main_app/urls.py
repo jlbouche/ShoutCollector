@@ -11,4 +11,5 @@ urlpatterns = [
     path('shouts/create/', views.ShoutCreate.as_view(), name='shouts_create'),
     path('shouts/<int:pk>/update/', views.ShoutUpdate.as_view(), name='shouts_update'),
     path('shouts/<int:pk>/delete/', views.ShoutDelete.as_view(), name='shouts_delete'),
+    path('shouts/<int:shout_id>/add_shouting/', views.add_shouting, name='add_shouting'),
 ]
