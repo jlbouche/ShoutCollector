@@ -18,6 +18,6 @@ urlpatterns = [
     path('dragons/', views.DragonList.as_view(), name='dragons_index'),
     path('dragons/<int:pk>/', views.DragonDetail.as_view(), name='dragons_detail'),
     path('dragons/create/', views.DragonCreate.as_view(), name='dragons_create'),
-    path('dragons/<int:pk>/update', views.DragonUpdate.as_view(), name='dragons_update'),
+    path('dragons/<int:pk>/update/', views.DragonUpdate.as_view(), name='dragons_update'),
     path('dragons/<int:pk>/delete/', views.DragonDelete.as_view(), name='dragons_delete'),
 ]

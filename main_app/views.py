@@ -87,8 +87,8 @@ class DragonCreate(CreateView):
 
 class DragonUpdate(UpdateView):
   model = Dragon
-  fields = '__all__'
+  fields = ['name', 'typeof']
 
 class DragonDelete(DeleteView):
   model = Dragon
-  fields = '__all__'
+  success_url = '/dragons/'
