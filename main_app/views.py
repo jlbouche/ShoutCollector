@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 # Add the following import
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView
 from .models import Shout, Dragon
 #import Shouting form
 from .forms import ShoutingForm

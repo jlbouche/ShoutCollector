@@ -14,7 +14,7 @@ urlpatterns = [
     path('shouts/<int:shout_id>/add_shouting/', views.add_shouting, name='add_shouting'),
     #associate dragon with shout (M:M)
     path('shouts/<int:shout_id>/assoc_dragon/<int:dragon_id>/', views.assoc_dragon, name='assoc_dragon'),
-    path('/dragons/', views.DragonList.as_view(), name='dragons_index'),
+    path('dragons/', views.DragonList.as_view(), name='dragons_index'),
     path('dragons/<int:pk>/', views.DragonDetail.as_view(), name='dragons_detail'),
     path('dragons/create/', views.DragonCreate.as_view(), name='dragons_create'),
     path('dragons/<int:pk>/update', views.DragonUpdate.as_view(), name='dragons_update'),
