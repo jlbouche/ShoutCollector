@@ -10,10 +10,10 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
-<body>
+<body class="grey">
   <header class="navbar-fixed">
     <nav>
-      <div class="nav-wrapper">
+      <div class="nav-wrapper black">
         <ul>
           <li><a href="/" class="left brand-logo">&nbsp;&nbsp;ShoutCollector</a></li>
         </ul>
@@ -25,11 +25,11 @@
       </div>
     </nav>
   </header>
-  <main class="container">
+  <main class="container grey">
     {% block content %}
     {% endblock %}
   </main>
-  <footer class="page-footer">
+  <footer class="page-footer black">
     <div class="right">All Rights Reserved, &copy; 2020 Shout Collector &nbsp;</div>
   </footer>
 </body>

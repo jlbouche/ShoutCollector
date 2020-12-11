@@ -4,9 +4,9 @@
 <h1>Shout List</h1>
 
 {% for shout in shouts %}
-<div class="card">
+<div class="card grey lighten-2">
     <a href="{% url 'detail' shout.id%}">
-      <div class="card-content">
+      <div class="card-content black-text">
         <span class="card-title">{{ shout.words }}</span>
       </div>
     </a>
