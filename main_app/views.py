@@ -1,9 +1,7 @@
 from django.shortcuts import render, redirect
-# Add the following import
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from .models import Shout, Dragon
-#import Shouting form
 from .forms import ShoutingForm
 
 # Create your views here.
@@ -12,8 +10,7 @@ from .forms import ShoutingForm
 
 class ShoutCreate(CreateView):
   model = Shout
-  fields = '__all__'
-  success_url = '/shouts/'
+  fields = ['words', 'translation', 'name', 'effect']
 
 class ShoutUpdate(UpdateView):
   model = Shout
