@@ -84,6 +84,7 @@ class DragonDetail(DetailView):
 class DragonCreate(CreateView):
   model = Dragon
   fields = '__all__'
+  success_url= '/dragons'
 
 class DragonUpdate(UpdateView):
   model = Dragon
